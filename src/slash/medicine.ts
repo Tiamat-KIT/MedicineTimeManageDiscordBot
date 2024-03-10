@@ -2,6 +2,9 @@ import {
   type ChatInputCommandInteraction,
   SlashCommandBuilder
 } from 'discord.js'
+import { ConvexBrowserClient } from '../client'
+import { api } from '../../convex/_generated/api'
+import { type Doc } from '../../convex/_generated/dataModel'
 
 export default {
   data: new SlashCommandBuilder()
@@ -27,6 +30,12 @@ export default {
       } else if (EveryOpt === 'month') {
         EveryOpt = '毎月'
       }
+      if (NameOpt == null || TimeOpt == null) throw new Error('正常な値取得ができていません')
+      void ConvexBrowserClient.mutation(api.medicine.AddMedicine, {
+        name: NameOpt,
+        time: TimeOpt,
+        every: EveryOpt as Doc<'medicine'>['every']
+      })
       await interaction.reply(`${NameOpt}を${TimeOpt}に${EveryOpt}飲みます`)
     }
   }
