@@ -1,0 +1,25 @@
+{
+  "name": "MedicineTimeManageDiscordBot",
+  "packageManager": "yarn@4.1.1",
+  "scripts": {
+    "test": "ts-node src/main.ts",
+    "start": "node build/main.js",
+    "compile": "tsc -p .",
+    "deploy:command": "ts-node src/add_command.ts"
+  },
+  "dependencies": {
+    "convex": "^1.10.0",
+    "discord.js": "^14.14.1",
+    "dotenv": "^16.4.5"
+  },
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^6.4.0",
+    "eslint": "^8.0.1",
+    "eslint-config-standard-with-typescript": "^43.0.1",
+    "eslint-plugin-import": "^2.25.2",
+    "eslint-plugin-n": "^15.0.0 || ^16.0.0 ",
+    "eslint-plugin-promise": "^6.0.0",
+    "ts-node": "^10.9.2",
+    "typescript": "*"
+  }
+}
