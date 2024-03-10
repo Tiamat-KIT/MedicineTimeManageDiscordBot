@@ -39,3 +39,4 @@ client.on(Events.InteractionCreate, async interaction => {
 })
 
 void client.login(process.env.DISCORD_TOKEN)
+console.info('Discordサーバ起動')
