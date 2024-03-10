@@ -2,7 +2,7 @@ import {
   type ChatInputCommandInteraction,
   SlashCommandBuilder
 } from 'discord.js'
-import { ConvexBrowserClient } from '../client'
+import { UtakataConvexClient } from '../client'
 import { api } from '../../convex/_generated/api'
 import { type Doc } from '../../convex/_generated/dataModel'
 
@@ -22,16 +22,9 @@ export default {
     if (interaction.commandName === 'medicine') {
       const TimeOpt = interaction.options.getString('time')
       const NameOpt = interaction.options.getString('name')
-      let EveryOpt = interaction.options.getString('every') !== 'none' ? interaction.options.getString('every') : ''
-      if (EveryOpt === 'day') {
-        EveryOpt = '毎日'
-      } else if (EveryOpt === 'week') {
-        EveryOpt = '毎週'
-      } else if (EveryOpt === 'month') {
-        EveryOpt = '毎月'
-      }
-      if (NameOpt == null || TimeOpt == null) throw new Error('正常な値取得ができていません')
-      void ConvexBrowserClient.mutation(api.medicine.AddMedicine, {
+      const EveryOpt = interaction.options.getString('every')
+      if (NameOpt == null || TimeOpt == null || EveryOpt == null) throw new Error('正常な値取得ができていません')
+      void UtakataConvexClient.mutation(api.medicine.AddMedicine, {
         name: NameOpt,
         time: TimeOpt,
         every: EveryOpt as Doc<'medicine'>['every']

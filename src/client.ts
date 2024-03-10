@@ -3,7 +3,7 @@ import {
   GatewayIntentBits
 } from 'discord.js'
 import {
-  ConvexHttpClient
+  ConvexClient
 } from 'convex/browser'
 import dotenv from 'dotenv'
 
@@ -20,4 +20,4 @@ export const client: Client = new Client({
 
 if (process.env.CONVEX_URL === undefined) throw new Error('Convexの環境変数が設定されていません')
 
-export const ConvexBrowserClient = new ConvexHttpClient(process.env.CONVEX_URL)
+export const UtakataConvexClient = new ConvexClient(process.env.CONVEX_URL)
