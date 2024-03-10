@@ -13,22 +13,13 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const discord_js_1 = require("discord.js");
-const dotenv_1 = __importDefault(require("dotenv"));
 const medicine_1 = __importDefault(require("./slash/medicine"));
-dotenv_1.default.config();
-const client = new discord_js_1.Client({
-    intents: [
-        discord_js_1.GatewayIntentBits.Guilds,
-        discord_js_1.GatewayIntentBits.GuildMembers,
-        discord_js_1.GatewayIntentBits.GuildMessages,
-        discord_js_1.GatewayIntentBits.MessageContent
-    ]
-});
-client.once(discord_js_1.Events.ClientReady, (c) => {
+const client_1 = require("./client");
+client_1.client.once(discord_js_1.Events.ClientReady, (c) => {
     var _a;
     console.log(`Ready! Logged in as ${(_a = c.user) === null || _a === void 0 ? void 0 : _a.tag}`);
 });
-client.on(discord_js_1.Events.MessageCreate, (message) => __awaiter(void 0, void 0, void 0, function* () {
+client_1.client.on(discord_js_1.Events.MessageCreate, (message) => __awaiter(void 0, void 0, void 0, function* () {
     if (message.author.bot) {
         return;
     }
@@ -36,7 +27,7 @@ client.on(discord_js_1.Events.MessageCreate, (message) => __awaiter(void 0, void
         void message.reply('Pong!');
     }
 }));
-client.on(discord_js_1.Events.InteractionCreate, (interaction) => __awaiter(void 0, void 0, void 0, function* () {
+client_1.client.on(discord_js_1.Events.InteractionCreate, (interaction) => __awaiter(void 0, void 0, void 0, function* () {
     if (!interaction.isChatInputCommand())
         return;
     if (interaction.commandName === medicine_1.default.data.name) {
@@ -57,4 +48,4 @@ client.on(discord_js_1.Events.InteractionCreate, (interaction) => __awaiter(void
         console.error(`${interaction.commandName}というコマンドには対応していません。`);
     }
 }));
-void client.login(process.env.DISCORD_TOKEN);
+void client_1.client.login(process.env.DISCORD_TOKEN);
