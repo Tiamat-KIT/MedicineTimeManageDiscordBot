@@ -1,7 +1,5 @@
 import { internalMutation, mutation, query } from './_generated/server'
 import { v } from 'convex/values'
-import dotenv from 'dotenv'
-dotenv.config()
 
 export const GetAllMedicine = query({
   async handler (ctx) {
