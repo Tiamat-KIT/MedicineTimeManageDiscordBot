@@ -32,9 +32,9 @@ export class UserCommand extends Command {
 		if (interaction.commandName === 'medicine') {
 			const TimeOpt = interaction.options.getString('time')
 			const NameOpt = interaction.options.getString('name')
-			const EveryOpt = interaction.options.getString('every') as Doc<'medicine'>['every']
+			const EveryOpt = interaction.options.getString('every')/*  as Doc<'medicine'>['every'] */
 			if (NameOpt == null || TimeOpt == null || EveryOpt == null) throw new Error('正常な値取得ができていません')
-			const TimeRegexed = TimeOpt.match(/^([01][0-9]|2[0-3]):([0-5][0-9])$/)
+			/* const TimeRegexed = TimeOpt.match(/^([01][0-9]|2[0-3]):([0-5][0-9])$/)
 			const TimeRegexedText = TimeRegexed?.[0]
 			if (TimeRegexed === null || TimeRegexedText === undefined) {
 			  await interaction.reply('時間指定が間違っています')
@@ -49,9 +49,9 @@ export class UserCommand extends Command {
 			  name: NameOpt,
 			  time: NowDate.toLocaleTimeString(),
 			  every: EveryOpt as Doc<'medicine'>['every']
-			})
+			}) */
 			const resultEvery = EveryOpt === 'day' ? '毎日' : EveryOpt === 'week' ? '毎週' : '毎月'
-			console.log(InputItem)
+			/* console.log(InputItem) */
 			await interaction.reply(`${NameOpt}を${TimeOpt}に${resultEvery}飲みます`)
 		  }
 	}
