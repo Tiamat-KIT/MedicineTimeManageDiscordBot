@@ -52,8 +52,12 @@ export const internalDayNotification = internalMutation({
         const NowTimeOnly = NowDateTime.match(/^([01][0-9]|2[0-3]):([0-5][0-9])$/)
         const DBTime = medicine.time.match(/^([01][0-9]|2[0-3]):([0-5][0-9])$/)
 
-        if (NowTimeOnly === null) throw new Error('プログラムの時刻形式に誤りがあります')
-        if (DBTime === null) throw new Error('データベースの時刻形式に誤りがあります')
+        if (NowTimeOnly === null) {
+          throw new Error('プログラムの時刻形式に誤りがあります')
+        }
+        if (DBTime === null) {
+          throw new Error('データベースの時刻形式に誤りがあります')
+        }
         if (DBTime[0] === NowTimeOnly[0]) {
           const response = fetch(`https://discordapp.com/api/channels/${process.env.CHANEL_ID}/messages`, {
             method: 'POST',
