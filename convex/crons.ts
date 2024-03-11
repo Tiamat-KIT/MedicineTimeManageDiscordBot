@@ -5,7 +5,7 @@ const crons = cronJobs()
 
 crons.interval(
   'Send Alert Message to Discord',
-  { seconds: 1 },
+  { seconds: 50 },
   internal.medicine.internalDayNotification
 )
 
