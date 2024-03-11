@@ -3,7 +3,7 @@
   "packageManager": "yarn@4.1.1",
   "scripts": {
     "test": "ts-node src/main.ts",
-    "start": "node build/main.js",
+    "start": "node public/main.js",
     "compile": "tsc -p .",
     "deploy:command": "ts-node src/add_command.ts"
   },
