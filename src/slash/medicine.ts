@@ -24,11 +24,12 @@ export default {
       const NameOpt = interaction.options.getString('name')
       const EveryOpt = interaction.options.getString('every')
       if (NameOpt == null || TimeOpt == null || EveryOpt == null) throw new Error('正常な値取得ができていません')
-      void UtakataConvexClient.mutation(api.medicine.AddMedicine, {
+      const InputItem = await UtakataConvexClient.mutation(api.medicine.AddMedicine, {
         name: NameOpt,
         time: TimeOpt,
         every: EveryOpt as Doc<'medicine'>['every']
       })
+      console.log(InputItem)
       await interaction.reply(`${NameOpt}を${TimeOpt}に${EveryOpt}飲みます`)
     }
   }
