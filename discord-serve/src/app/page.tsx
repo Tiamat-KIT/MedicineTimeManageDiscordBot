@@ -1,10 +1,21 @@
+import { BackgroundGradientAnimation } from "@/components/ui/background-gradient-animation"
 import { BackgroundGradient } from "@/components/ui/background-gradient";
 import Image from "next/image";
+import { Spotlight } from "@/components/ui/Spotlight";
+import DiscordOAuthButton from "@/components/DiscordOAuthButton";
 
 export default function Home() {
   return (
-    <main>
-        <BackgroundGradient className="rounded-[22px] max-w-sm p-4 sm:p-10 bg-white dark:bg-zinc-900">
+    <BackgroundGradientAnimation>
+      <Spotlight
+        className="-top-40 left-0 md:left-60 md:-top-20"
+        fill="white"
+      />
+      <h1 className="text-4xl md:text-7xl font-bold text-center bg-clip-text text-transparent bg-gradient-to-b from-neutral-50 to-neutral-400 bg-opacity-50">
+          Utakata Kyosui <br /> Discord Bot.
+        </h1>
+      <main className="flex flex-row justify-center p-5">
+        <BackgroundGradient containerClassName="w-96" className="rounded-[22px] max-w-sm p-4 sm:p-10 bg-white dark:bg-zinc-900">
           <Image
             src={`/utakata.png`}
             alt="jordans"
@@ -21,13 +32,9 @@ export default function Home() {
             February 17, 2024. Your best opportunity to get these right now is by
             entering raffles and waiting for the official releases.
           </p>
-          <button /*  onClick={redirect} */ className="rounded-full pl-4 pr-1 py-1 text-white flex items-center space-x-1 bg-black mt-4 text-xs font-bold dark:bg-zinc-800">
-            <span>Login</span>
-            <span className="bg-zinc-700 rounded-full text-[0.6rem] px-2 py-0 text-white">
-              $100
-            </span>
-          </button>
-        </BackgroundGradient>
-    </main>
+          <DiscordOAuthButton />
+          </BackgroundGradient>
+      </main>
+    </BackgroundGradientAnimation>
   );
 }
